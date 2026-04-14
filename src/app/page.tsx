@@ -120,7 +120,10 @@ export default function Home() {
       {/* Loading Screen */}
       <AnimatePresence mode="wait">
         {isLoading && (
-          <LoadingScreen key="loading" onComplete={handleLoadingComplete} />
+          <LoadingScreen
+            key="loading"
+            onComplete={handleLoadingComplete}
+          />
         )}
       </AnimatePresence>
 

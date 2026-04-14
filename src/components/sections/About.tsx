@@ -9,7 +9,7 @@ import ID from "@/assets/profid.png";
 
 const facts = [
   { icon: MapPin, label: "Location", value: "Cebu City, Philippines" },
-  { icon: Coffee, label: "Fuel", value: "Matcha Latte 🍵" },
+  { icon: Coffee, label: "Fuel", value: "Matcha Latte ☕" },
   { icon: Code2, label: "Lines of Code", value: "500k+" },
 ];
 
