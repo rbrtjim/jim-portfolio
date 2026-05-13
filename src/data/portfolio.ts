@@ -1,5 +1,4 @@
 // src/data/portfolio.ts
-// CREATE THIS FILE if it does not exist
 
 export const navItems = [
   { label: "About", href: "#about" },
@@ -12,14 +11,14 @@ export const navItems = [
 export const projects = [
   {
     id: 1,
-    title: "E-Commerce Platform",
+    title: "QuickServe QR",
     subtitle: "Full-Stack Shopping Experience",
     description:
-      "A modern e-commerce platform built with Next.js, featuring real-time inventory, AI-powered recommendations, and seamless checkout experience.",
+      "A smart restaurant ordering system where customers scan a QR code on their table to view the menu, place orders, and track their food in real-time from their phone. It also provides staff with a live dashboard to manage orders, process payments, and monitor all tables at a glance.",
     image: "/projects/ecommerce.jpg",
-    tags: ["Next.js", "TypeScript", "Stripe", "PostgreSQL", "Redis"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
+    tags: ["Next.js", "React", "TypeScript", "Tailwind CSS ", "ASP.NET Core Web API ", "SignalR", "SQLite", "PostgreSQL", "JWT", "BCrypt"],
+    liveUrl: "https://quickserveqr-screens.vercel.app/",
+    githubUrl: "https://github.com/rbrtjim/quickserveqr.git",
     featured: true,
     color: "#0071e3",
   },
@@ -108,38 +107,39 @@ export const skills = [
 export const experiences = [
   {
     id: 1,
-    company: "Apple Inc.",
-    role: "Senior Software Engineer",
-    period: "2022 — Present",
+    company: "KYOCERA Document Solutions Development Philippines Inc.",
+    role: "Software Engineer II",
+    period: "2023 — Present",
     description: [
-      "Led development of core features for iOS applications used by millions",
-      "Architected microservices infrastructure reducing latency by 40%",
-      "Mentored team of 5 junior developers",
+      "Design, develop, and implement software applications and systems.",
+      "Analyze user needs and software requirements to determine feasibility and design solutions.",
+      "Work closely with product managers, designers, and other stakeholders to align on project objectives.",
+      "Analyze user needs and software requirements to determine feasibility and design solutions.",
     ],
-    logo: "🍎",
+    logo: "🖨️",
   },
   {
     id: 2,
-    company: "Google",
-    role: "Software Engineer II",
-    period: "2020 — 2022",
+    company: "Alfa Business Sourcing Philippines",
+    role: "IT Specilist Engineer",
+    period: "2022 — 2023",
     description: [
       "Built scalable APIs serving 10M+ daily requests",
       "Improved search algorithm performance by 25%",
       "Contributed to open-source projects",
     ],
-    logo: "🔍",
+    logo: "🌐",
   },
   {
     id: 3,
-    company: "Startup XYZ",
-    role: "Full-Stack Developer",
-    period: "2018 — 2020",
+    company: "IT Student",
+    role: "Product Designer / UI/UX Designer",
+    period: "2018 — 2022",
     description: [
-      "Built the entire product from scratch using React and Node.js",
-      "Implemented real-time features using WebSockets",
-      "Grew user base from 0 to 50,000 users",
+      "Assist users on their software and hardware concerns",
+      "Implemented real-time customer service",
+      "Handles network and server issues within the enterprise network",
     ],
-    logo: "🚀",
+    logo: "🎨",
   },
 ];

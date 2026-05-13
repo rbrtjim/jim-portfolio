@@ -215,7 +215,7 @@ export default function Experience() {
                     Technologies Used
                   </h4>
                   <div className="flex flex-wrap gap-2">
-                    {["React", "TypeScript", "Node.js", "AWS", "PostgreSQL"].map(
+                    {["React", "TypeScript", "Node.js", "C# .NET", "JavaScript", "Avalonia"].map(
                       (tech, i) => (
                         <motion.span
                           key={tech}

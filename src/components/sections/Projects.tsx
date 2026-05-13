@@ -105,7 +105,7 @@ export default function Projects() {
                 "px-5 py-2 rounded-full text-sm font-medium transition-all duration-300",
                 activeFilter === filter
                   ? "bg-apple-blue text-white shadow-lg shadow-blue-500/25"
-                  : "bg-gray-100 text-apple-gray hover:bg-gray-200"
+                  : "bg-gray-100 text-apple-gray hover:bg-gray-200",
               )}
             >
               {filter}
@@ -178,7 +178,7 @@ export default function Projects() {
                         className="inline-flex items-center gap-2 px-5 py-2.5 bg-apple-dark text-white text-sm font-medium rounded-full hover:bg-gray-800 transition-colors"
                       >
                         <ExternalLink size={15} />
-                        Live Demo
+                        Screens
                       </motion.a>
                       <motion.a
                         href={project.githubUrl}
@@ -315,7 +315,7 @@ export default function Projects() {
                     </motion.a>
                   </motion.div>
                 </div>
-              
+
                 {/* Card Content */}
                 <div className="p-6">
                   {/* Tags */}

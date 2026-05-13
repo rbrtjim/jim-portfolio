@@ -47,18 +47,26 @@ export function useActiveSection() {
 
     const observer = new IntersectionObserver(
       (entries) => {
+        let mostVisibleSection = "";
+        let maxRatio = -1;
+
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
+          if (entry.isIntersecting && entry.intersectionRatio > maxRatio) {
+            maxRatio = entry.intersectionRatio;
+            mostVisibleSection = entry.target.id;
           }
         });
+
+        if (mostVisibleSection && mostVisibleSection !== activeSection) {
+          setActiveSection(mostVisibleSection);
+        }
       },
-      { threshold: 0.5 }
+      { threshold: 0.3 }
     );
 
     sections.forEach((section) => observer.observe(section));
     return () => observer.disconnect();
-  }, []);
+  }, [activeSection]);
 
   return activeSection;
 }

@@ -5,14 +5,32 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { useScrollY, useActiveSection } from "@/hooks/useScrollAnimation";
+import { useCallback } from "react";
 import { navItems } from "@/data/portfolio";
 import { cn } from "@/lib/utils";
 
 export default function Navbar() {
   const scrollY = useScrollY();
-  const activeSection = useActiveSection();
+  const scrollActiveSection = useActiveSection();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [optimisticActiveSection, setOptimisticActiveSection] = useState("");
   const isScrolled = scrollY > 20;
+
+  // Combine optimistic click state with scroll state (optimistic takes precedence)
+  const activeSection = optimisticActiveSection || scrollActiveSection;
+
+  // Clear optimistic state after short delay or scroll change
+  useEffect(() => {
+    if (optimisticActiveSection) {
+      const timeout = setTimeout(() => setOptimisticActiveSection(""), 2500);
+      return () => clearTimeout(timeout);
+    }
+  }, [optimisticActiveSection]);
+
+  const handleNavClick = useCallback((href: string) => {
+    const sectionId = href.replace("#", "");
+    setOptimisticActiveSection(sectionId);
+  }, []);
 
   // Close mobile menu on resize
   useEffect(() => {
@@ -61,6 +79,7 @@ export default function Navbar() {
                 <Link
                   key={item.label}
                   href={item.href}
+                  onClick={() => handleNavClick(item.href)}
                   className={cn(
                     "relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300",
                     activeSection === item.href.replace("#", "")
@@ -71,8 +90,17 @@ export default function Navbar() {
                   {activeSection === item.href.replace("#", "") && (
                     <motion.span
                       layoutId="activeNav"
-                      className="absolute inset-0 bg-blue-50 rounded-full"
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                      className="absolute inset-0 bg-apple-blue/30 backdrop-blur-sm rounded-full shadow-sm border border-apple-blue/20"
+                      transition={{ 
+                        type: "spring", 
+                        stiffness: 420, 
+                        damping: 35,
+                        scale: {
+                          type: "spring",
+                          stiffness: 400,
+                          damping: 20
+                        }
+                      }}
                     />
                   )}
                   <span className="relative z-10">{item.label}</span>
@@ -139,13 +167,29 @@ export default function Navbar() {
                       href={item.href}
                       onClick={() => setMobileOpen(false)}
                       className={cn(
-                        "block px-4 py-3 rounded-xl text-base font-medium transition-all duration-200",
+                        "relative block px-4 py-3 rounded-xl text-base font-medium transition-all duration-200",
                         activeSection === item.href.replace("#", "")
-                          ? "bg-blue-50 text-apple-blue"
+                          ? "text-apple-blue"
                           : "text-apple-dark hover:bg-gray-50"
                       )}
                     >
-                      {item.label}
+                      {activeSection === item.href.replace("#", "") && (
+                        <motion.span
+                          layoutId="activeMobileNav"
+                          className="absolute inset-0 bg-apple-blue/30 backdrop-blur-sm rounded-xl shadow-sm border border-apple-blue/20"
+                          transition={{ 
+                            type: "spring", 
+                            stiffness: 420, 
+                            damping: 35,
+                            scale: {
+                              type: "spring",
+                              stiffness: 400,
+                              damping: 20
+                            }
+                          }}
+                        />
+                      )}
+                      <span className="relative z-10 block">{item.label}</span>
                     </Link>
                   </motion.div>
                 ))}
